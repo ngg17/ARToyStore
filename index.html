@@ -20,10 +20,18 @@
       crossorigin="anonymous"
     />
 
-    <!-- Sweetalert -->
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
     <script>
@@ -39,13 +47,14 @@
       firebase.initializeApp(firebaseConfig);
     </script>
 
-    <!--StyleSheet -->
+    <!--StyleSheet-->
     <link href="./style.css" rel="stylesheet" />
 
     <!--JS-->
     <script src="./js/addButtons.js"></script>
     <script src="./js/addMarkers.js"></script>
     <script src="./js/markerhandler.js"></script>
+    <script src="./js/stars.js"></script>
   </head>
 
   <body style="margin : 0px; overflow: hidden;">
@@ -61,10 +70,113 @@
       createbuttons
       createmarkers
     >
-      <!--Camera-->
+      <!-- Camera -->
       <a-entity camera></a-entity>
     </a-scene>
-    <!-- Button-->
+
     <div id="button-div"></div>
+
+    <div class="container">
+      <div id="modal-div" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Order Summary</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onclick="closeModal()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <td><strong>Item</strong></td>
+                      <td class="text-center"><strong>Price</strong></td>
+                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td class="text-right"><strong>Total</strong></td>
+                    </tr>
+                  </thead>
+                  <tbody id="bill-table-body">
+
+                 </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="pay-button" type="button" class="btn btn-primary">
+                Pay Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        id="rating-modal-div"
+        class="rating-modal"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Rate Toy</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onclick="closeRatingModal()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <input
+                  id="rating-input"
+                  name="rating-input"
+                  class="rating rating-loading"
+                  data-min="0"
+                  data-max="5"
+                  data-step="0.1"
+                  value="0"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="save-rating-button"
+                type="button"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function closeModal() {
+        document.getElementById("modal-div").style.display = "none";
+      }
+    </script>
+
+    <script>
+      function closeRatingModal() {
+        document.getElementById("rating-modal-div").style.display = "none";
+      }
+    </script>
   </body>
 </html>

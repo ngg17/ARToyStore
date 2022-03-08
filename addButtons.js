@@ -8,7 +8,12 @@ AFRAME.registerComponent("createbuttons", {
     button2.innerHTML = "ORDER SUMMARY";
     button2.setAttribute("id", "order-summary-button");
     button2.setAttribute("class", "btn btn-danger ml-3");
+    var button3 = document.createElement("button");
+    button3.innerHTML = "RATE NOW";
+    button3.setAttribute("id", "rating-button");
+    button3.setAttribute("class", "btn btn-danger ml-3 mr-3");
     var buttonDiv = document.getElementById("button-div");
+    buttonDiv.appendChild(button3);
     buttonDiv.appendChild(button2);
     buttonDiv.appendChild(button1);
   }

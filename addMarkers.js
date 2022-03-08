@@ -12,6 +12,7 @@ AFRAME.registerComponent("createmarkers", {
       });
       marker.setAttribute("markerhandler", {});
       mainScene.appendChild(marker);
+
       if (!toy.is_out_of_stock) {
         var model = document.createElement("a-entity");
         model.setAttribute("id", `model-${toy.id}`);
@@ -55,6 +56,7 @@ AFRAME.registerComponent("createmarkers", {
           value: toy.toy_name.toUpperCase()
         });
         titlePlane.appendChild(toyTitle);
+
         var price = document.createElement("a-entity");
         price.setAttribute("id", `price-${toy.id}`);
         price.setAttribute("position", { x: -0.65, y: 0.75, z: 0.1 });
@@ -66,6 +68,7 @@ AFRAME.registerComponent("createmarkers", {
           align: "center",
           value: `$${toy.price}`
         });
+
         mainPlane.appendChild(price);
         var description = document.createElement("a-entity");
         description.setAttribute("id", `description-${toy.id}`);
@@ -82,6 +85,7 @@ AFRAME.registerComponent("createmarkers", {
           value: `${toy.description}`
         });
         mainPlane.appendChild(description);
+
         var age = document.createElement("a-entity");
         age.setAttribute("id", `age-${toy.id}`);
         age.setAttribute("position", { x: -0.75, y: -0.8, z: 0.1 });
@@ -94,7 +98,23 @@ AFRAME.registerComponent("createmarkers", {
           align: "center",
           value: `AGE : ${toy.age_group}`
         });
+
         mainPlane.appendChild(age);
+        var rating = document.createElement("a-entity");
+        rating.setAttribute("id", `rating-${toy.id}`);
+        rating.setAttribute("position", { x: -0.75, y: -1, z: 0.1 });
+        rating.setAttribute("rotation", { x: 0, y: 0, z: 0 });
+        rating.setAttribute("text", {
+          font: "aileronsemibold",
+          color: "#290149",
+          width: 2,
+          height: 5,
+
+          align: "center",
+          value: `RATING : ${toy.rating}`
+        });
+
+        mainPlane.appendChild(rating);
       }
     });
   },
